@@ -1,0 +1,26 @@
+﻿<Window x:Class="TimetableUI.Dialogs.StringDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimetableUI.Dialogs"
+        mc:Ignorable="d"
+        Title="Edit Value" WindowStartupLocation="CenterScreen" SizeToContent="Height" Width="275" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- 1 | Text -->
+        <TextBlock Grid.Row="0" x:Name="LblMessage" Text="Enter value:"/>
+        <!-- 2 | Input -->
+        <TextBox Grid.Row="1" x:Name="TxtInput" Margin="0,4,0,10"/>
+        <!-- 3 | Dialog Button -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="BtnOk" Content="OK" MinWidth="75" Margin="0,0,10,0" Click="BtnOk_Click" IsDefault="True" />
+            <Button x:Name="BtnCancel" Content="Cancel" MinWidth="75" IsCancel="True" />
+        </StackPanel>
+    </Grid>
+</Window>

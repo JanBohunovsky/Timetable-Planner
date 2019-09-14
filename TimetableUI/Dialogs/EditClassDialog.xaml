@@ -1,0 +1,87 @@
+﻿<Window x:Class="TimetableUI.Dialogs.EditClassDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimetableUI.Dialogs"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:system1="clr-namespace:System;assembly=System"
+        mc:Ignorable="d"
+        Title="Class Editor" Height="361.507" Width="307.636" SizeToContent="Height" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/TimetableUI;component/Icons/class.png">
+    <Window.Resources>
+        <local:ImageSourceConverter x:Key="ImageSourceConverter" />
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,5,10" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+    </Window.Resources>
+    <DockPanel Margin="10">
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Subject:"/>
+            <TextBox x:Name="TxtSubject" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Teacher:"/>
+            <TextBox x:Name="TxtTeacher" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Type:"/>
+            <ComboBox x:Name="ComboType" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Converter={StaticResource ImageSourceConverter}}" Margin="0,0,3,0" Stretch="None" />
+                            <TextBlock Text="{Binding}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Separator Grid.Row="3" Grid.Column="1" Margin="0,0,0,10"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Day:"/>
+            <ComboBox x:Name="ComboDay" Grid.Row="4" Grid.Column="1" Margin="0,0,0,10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Start:"/>
+            <ComboBox x:Name="ComboTimeStart" Grid.Row="5" Grid.Column="1" Margin="0,0,0,10" SelectionChanged="ComboTimeStart_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding StringFormat={}{0:h\\:mm}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Duration:"/>
+            <ComboBox x:Name="ComboDuration" Grid.Row="6" Grid.Column="1" Margin="0,0,0,10" IsEnabled="False">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button x:Name="BtnSave" Content="Save" MinWidth="75" Margin="0,0,10,0" Click="BtnSave_Click" IsDefault="True" />
+            <Button x:Name="BtnCancel" Content="Cancel" MinWidth="75" IsCancel="True" />
+        </StackPanel>
+    </DockPanel>
+</Window>

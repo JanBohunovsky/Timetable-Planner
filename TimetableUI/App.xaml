@@ -1,0 +1,18 @@
+﻿<Application x:Class="TimetableUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TimetableUI">
+    <Application.Resources>
+        <Style TargetType="Image">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}, Path=IsEnabled}" Value="False">
+                    <Setter Property="Opacity" Value="0.25" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ImgButton" TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Padding" Value="2" />
+        </Style>
+    </Application.Resources>
+</Application>
